@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.json.simple.JSONArray;
 
 
 /**
@@ -152,8 +153,8 @@ public class DB_Users {
         return rowCount;
     }
     
-    public List<String> getAllUserName(){
-        List<String> users=new ArrayList<String>();
+    public JSONArray getAllUserName(){
+        JSONArray users=new JSONArray();
         try {
             Connection con=getConnection();
             String query="SELECT username FROM users";

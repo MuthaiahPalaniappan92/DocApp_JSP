@@ -14,10 +14,11 @@
         <title>Log In</title>
         <link rel="stylesheet" href="resources/css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="resources/css/styles.css"  type="text/css">
-        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-        <script src="resources/jquery-ui/jquery.ui.js"></script>
-        <script src="resources/js/additional-methods.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="resources/js/jquery.validate.min.js"></script>
+        <script src="./resources/js/myScript.js"></script>
     </head>
     <body>
        
@@ -73,7 +74,10 @@
                 db.insertUsers(u);
                 out.println("<p class='well'><b>Welcome Please Log In"+"</b></p>");
             }
+            
+            
         %>
+        
         
         <form name="login" action="LoginServlet" method="POST">
             
@@ -84,7 +88,7 @@
                     <label for="username" style="color:red">*</label>
                 </div> 
                 <div class="col-lg-4">
-                    <input type="text" class="form-control" name="username"/>
+                    <input type="text" class="form-control" id="username" name="username"/>
                 </div>    
             </div> 
             </div>

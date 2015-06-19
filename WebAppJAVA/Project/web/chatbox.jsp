@@ -4,6 +4,7 @@
     Author     : c0652674
 --%>
 
+<%@page import="Project.DB_Users"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,9 +13,11 @@
         <title>Chat Box</title>
         <link rel="stylesheet" href="resources/css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="resources/css/styles.css"  type="text/css">
-        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-        <script src="resources/js/additional-methods.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="resources/js/jquery.validate.min.js"></script>
+        <script src="./resources/js/myScript.js"></script>
     </head>
     <body>
        
@@ -40,6 +43,17 @@
                 <%String userName=session.getAttribute("username").toString();%>
                 <p><b>WELCOME <%=userName%></b></p>
             </div>
+            
+            <%DB_Users d=new DB_Users();%>
+            <script type="text/javascript">
+                var myJSON = "<% System.out.println(d.getAllUserName()); %>";
+                $(function() {
+
+                    $( "#username" ).autocomplete({
+                      source: myJSON
+                    });
+                });
+            </script>
             
             <form action="" method="POST">
                 
