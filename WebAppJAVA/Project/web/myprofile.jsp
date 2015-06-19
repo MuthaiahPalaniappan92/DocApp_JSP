@@ -41,12 +41,11 @@
                 
                 <%
                     
-                    String user=session.getAttribute("username").toString();
-                    if(!(user.isEmpty())){
-                        
-                        out.println(user);
-                    }else{
-                        out.println("<h3 style='color:red'>Please Log in</h3>");
+                    try{
+                        String user=session.getAttribute("username").toString();
+                        System.out.println(user);
+                    }catch(Exception e){
+                        response.sendRedirect("login.jsp");
                     }
                     
                 %>

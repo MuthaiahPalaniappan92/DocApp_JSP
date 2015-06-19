@@ -40,8 +40,13 @@
         <div class="container">
             
             <div class="well">
-                <%String userName=session.getAttribute("username").toString();%>
-                <p><b>WELCOME <%=userName%></b></p>
+                <%try{
+                    String userName=session.getAttribute("username").toString();
+                    out.println("<p><b>WELCOME "+userName+"</b></p>");
+                }catch(Exception e){
+                    response.sendRedirect("login.jsp");
+                }
+                %>
             </div>
             
             <%DB_Users d=new DB_Users();%>
@@ -49,8 +54,8 @@
                 var myJSON = "<% System.out.println(d.getAllUserName()); %>";
                 $(function() {
 
-                    $( "#username" ).autocomplete({
-                      source: myJSON
+                    $( "#receiver" ).autocomplete({
+                      source: myJSON;
                     });
                 });
             </script>
