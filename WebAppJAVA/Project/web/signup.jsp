@@ -12,20 +12,22 @@
         <title>Sign Up</title>
         <link rel="stylesheet" href="resources/css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="resources/css/styles.css"  type="text/css">
-        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-        <script src="resources/js/additional-methods.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="resources/js/jquery.validate.min.js"></script>
         <script src="./resources/js/myScript.js"></script>
-        <script src="resources/jquery-ui/jquery.ui.js"></script>
+        
         <script type="text/javascript">
+           
             function validateUserName(){
                 var text=document.getElementById("fName").value;
                 if(text==""){
-                    document.getElementById("errorFirstName").innerHTML("Mandatory field");
+                    document.getElementById("errorFirstName").innerHTML = "Mandatory field";
                     document.getElementById("errorFirstName").style.color="red";
                 }else{
-                    document.getElementById("errorFirstName").innerHTML("OK");
-                    document.getElementById("errorFirstName").style.color="green";
+                    $("#errorFirstName").html("OK");
+                    $("#errorFirstName").css({color: "green"});
                 }   
             }
         </script>
@@ -33,7 +35,6 @@
     <body>
         <div >
         <header>
-        
             <div class="navbar navbar-default">
 		<div class="navbar-header">
                     <ul class="nav nav-pills nav-justified">
@@ -153,8 +154,6 @@
                     </div>
                 </div>
             </form>
-            <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-            <script src="../resources/js/bootstrap.min.js"></script>
         </div>
         </div>
 </html>

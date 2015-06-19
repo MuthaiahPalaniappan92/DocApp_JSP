@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-$(document).getready(function(){
+$(document).ready(function(){
     $(function() {
     var availableTags = [
       "ActionScript",
