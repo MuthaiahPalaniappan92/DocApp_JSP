@@ -51,7 +51,7 @@
             
             <%DB_Users d=new DB_Users();%>
             <script type="text/javascript">
-                var myJSON = "<% System.out.println(d.getAllUserName()); %>";
+                var myJSON = "<% System.out.println(d.getAllUserName().toString()); %>";
                 $(function() {
 
                     $( "#receiver" ).autocomplete({
