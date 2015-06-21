@@ -43,9 +43,9 @@
                 
                 <%
                     
-                    
+                        String userName="";
                     try{
-                        String userName=session.getAttribute("username").toString();
+                        userName=session.getAttribute("username").toString();
                         out.println("<p><b>WELCOME "+userName+"</b></p>");
             //          System.out.println(d.getAllUserName().toString());
                     }catch(Exception e){
@@ -72,7 +72,8 @@
                         <label for="receiver">To :</label>
                     </div>
                     <div class="col-lg-3">
-                        <input type="text" name="receiver" id="receiver" class="form-control"/>                        
+                        <input type="text" name="receiver" id="receiver" class="form-control"/>  
+                        <input type="hidden" name="sender" id="sender" value="<%=userName%>"/>
                     </div>    
                 </div>    
                 <div class="row form-group">

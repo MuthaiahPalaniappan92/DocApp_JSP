@@ -76,7 +76,15 @@ public class ChatServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         try {
-            
+            if(request.getParameter("sender")!=null && request.getParameter("receiver")!=null && request.getParameter("message")!=null){
+                HttpSession session=request.getSession();
+                session.setAttribute("sender", request.getParameter("sender"));
+                DB_Users u=new DB_Users();
+                String sender=request.getParameter("sender");
+                String receiver=request.getParameter("receiver");
+                String message=request.getParameter("message");
+                u.insertChat(message, sender, receiver);
+            }
             
         } catch (Exception e) {
         }
