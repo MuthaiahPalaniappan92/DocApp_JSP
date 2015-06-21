@@ -19,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author c0652674
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "ChatServlet", urlPatterns = {"/ChatServlet"})
+public class ChatServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,13 +39,12 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");            
+            out.println("<title>Servlet ChatServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ChatServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            
         }
     }
 
@@ -62,11 +61,6 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
-        HttpSession session=request.getSession();
-        session.removeAttribute("username");
-        response.sendRedirect("login.jsp");
-        request.setAttribute("loginFailedMessage", "Logged out Successfully");
     }
 
     /**
@@ -81,22 +75,14 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-            String userName=request.getParameter("username");
-            String password=request.getParameter("password");
-            DB_Users db=new DB_Users();
-            int loginCheck=db.doLogin(userName, password); 
+        try {
             
-        if(loginCheck==1){
-                    String loginUserName=db.updateLoginUserDetails(userName, password);
-                    HttpSession session=request.getSession();
-                    session.setAttribute("username", loginUserName);
-                    //response.sendRedirect("myprofile.jsp");            
-                    request.getRequestDispatcher("myprofile.jsp").forward(request, response);
-                    
-                }else{
-                    request.setAttribute("loginFailedMessage", "UserName or Password you entered is incorrect");
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
-                }
+            
+        } catch (Exception e) {
+        }
+        if(request.getParameter("receiver")!=null && request.getParameter("message")!=null){
+            
+        }
     }
 
     /**

@@ -40,34 +40,39 @@
         <div class="container">
             
             <div class="well">
-                <%try{
-                    String userName=session.getAttribute("username").toString();
-                    out.println("<p><b>WELCOME "+userName+"</b></p>");
-                }catch(Exception e){
-                    response.sendRedirect("login.jsp");
-                }
+                
+                <%
+                    
+                    
+                    try{
+                        String userName=session.getAttribute("username").toString();
+                        out.println("<p><b>WELCOME "+userName+"</b></p>");
+            //          System.out.println(d.getAllUserName().toString());
+                    }catch(Exception e){
+                        response.sendRedirect("login.jsp");
+                    }
                 %>
             </div>
             
-            <%DB_Users d=new DB_Users();%>
             <script type="text/javascript">
-                var myJSON = "<% System.out.println(d.getAllUserName().toString()); %>";
+                <%DB_Users d=new DB_Users();%>
+                
                 $(function() {
-
+                    var myJSON = <%out.println(d.getAllUserName(session.getAttribute("username").toString()));%>;
                     $( "#receiver" ).autocomplete({
-                      source: myJSON;
+                        source: myJSON
                     });
                 });
             </script>
             
-            <form action="" method="POST">
+            <form action="ChatServlet" method="POST">
                 
                 <div class="row form-group">
                     <div class="col-xs-1 ">
                         <label for="receiver">To :</label>
                     </div>
                     <div class="col-lg-3">
-                        <input type="text" name="receiver" id="receiver" class="form-control"/>
+                        <input type="text" name="receiver" id="receiver" class="form-control"/>                        
                     </div>    
                 </div>    
                 <div class="row form-group">

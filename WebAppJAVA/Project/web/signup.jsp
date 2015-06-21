@@ -62,7 +62,7 @@
                         <label for="firstName" style="color: red">*</label>
                     </div>
                     <div class="col-lg-4">
-                        <input type="text" name="firstName" id="fName" class="form-control" onblur="validateUserName();" placeholder="Enter your First Name"/>
+                        <input type="text" name="firstName" value="" id="fName" class="form-control" onblur="validateUserName();" placeholder="Enter your First Name"/>
                     </div> 
                     <div class="col-md-3" id="errorFirstName"></div>
                 </div>

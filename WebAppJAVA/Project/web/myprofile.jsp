@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>User Name</title>
+        <title><%=session.getAttribute("username").toString()%></title>
         <link rel="stylesheet" href="resources/css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="resources/css/styles.css"  type="text/css">
         <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
@@ -44,7 +44,7 @@
                     try{
                         String user=session.getAttribute("username").toString();
                         System.out.println(user);
-                    }catch(Exception e){
+                    }catch(NullPointerException e){
                         response.sendRedirect("login.jsp");
                     }
                     

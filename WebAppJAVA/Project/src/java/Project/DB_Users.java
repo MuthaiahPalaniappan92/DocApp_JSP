@@ -151,12 +151,13 @@ public class DB_Users {
         return rowCount;
     }
     
-    public JSONArray getAllUserName(){
+    public JSONArray getAllUserName(String sessionUser){
         JSONArray users=new JSONArray();
         try {
             Connection con=getConnection();
-            String query="SELECT username FROM users";
+            String query="SELECT username FROM users WHERE username!=?";
             PreparedStatement stmt=con.prepareStatement(query);
+            stmt.setString(1, sessionUser);
             ResultSet rs=stmt.executeQuery();
             while(rs.next()){
                 users.add(rs.getString("username"));
@@ -164,5 +165,19 @@ public class DB_Users {
         } catch (SQLException e) {
         }
         return users;
+    }
+    
+    public void insertChat(String message,String sender,String receiver){
+        try {
+            Connection con=getConnection();
+            String query="INSERT INTO chat (sender,reciver,message) VALUES(?,?,?) ";
+            PreparedStatement stmt=con.prepareStatement(query);
+            stmt.setString(1, sender);
+            stmt.setString(2, receiver);
+            stmt.setString(3, message);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error");
+        }
     }
 }
