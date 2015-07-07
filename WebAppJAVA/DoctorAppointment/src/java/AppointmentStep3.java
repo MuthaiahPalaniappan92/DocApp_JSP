@@ -17,13 +17,22 @@ import javax.faces.bean.ManagedBean;
 public class AppointmentStep3 {
     private AppointmentStep2 appointment2=new AppointmentStep2();
     
-    private Time time;
+    private String time;
+    private boolean emailAlert;
+
+    public boolean isEmailAlert() {
+        return emailAlert;
+    }
+
+    public void setEmailAlert(boolean emailAlert) {
+        this.emailAlert = emailAlert;
+    }
     
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
         

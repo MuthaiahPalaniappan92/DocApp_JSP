@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Choose Time</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
+        <link rel="stylesheet" href="resources/styles.css"></link>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <header>
+            <div class="navbar navbar-default">
+		<div class="navbar-header">
+                    <ul class="nav nav-pills nav-justified">
+                        <li><h2>Welcome to Blue water</h2></li>
+		    </ul>
+                </div>
+            </div>
+            </header>
+                
+            <h:form>
+                <div class="row form-group">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <h:outputText value="#{apt4.appointment3.appointment2.appointment.patientName}" styleClass="control-label"></h:outputText>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <h:outputText value="#{apt4.appointment3.appointment2.appointment.emailId}" styleClass="control-label"></h:outputText>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <h:outputText value="#{apt4.appointment3.appointment2.appointment.sex}" styleClass="control-label"></h:outputText>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <h:outputText value="#{apt4.appointment3.appointment2.appointment.diagnosis}" styleClass="control-label"></h:outputText>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <h:outputText value="#{apt4.appointment3.appointment2.appointment.speciality}" styleClass="control-label"></h:outputText>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4 col-lg-offset-4">
+                         <h:outputText value="#{apt4.appointment3.appointment2.doctor}" styleClass="control-label"></h:outputText>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4 col-lg-offset-4">
+                         <h:outputText value="#{apt4.appointment3.appointment2.date}" styleClass="control-label"></h:outputText>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4 col-lg-offset-4">
+                         <h:outputText value="#{apt4.appointment3.time}" styleClass="control-label"></h:outputText>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <h:outputText value="#{apt4.appointment3.emailAlert}" styleClass="control-label"></h:outputText>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

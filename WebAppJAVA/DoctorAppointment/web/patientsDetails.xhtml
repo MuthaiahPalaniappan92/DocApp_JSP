@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Patient Details</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
@@ -25,31 +26,42 @@
                 
                 <h:form>
                     <div class="row form-group">
-                        <div class="col-lg-4 ">
+                        <div class="col-lg-4 col-lg-offset-4">
                             <h:outputText value="Patient's Name:" styleClass="control-label"></h:outputText>
-                            <h:inputText value="#{apt2.appointment.patientName}" styleClass="form-control"></h:inputText>
+                            <h:inputText value="#{apt4.appointment3.appointment2.appointment.patientName}" styleClass="form-control"></h:inputText>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-lg-4 ">
+                        <div class="col-lg-4 col-lg-offset-4">
                             <h:outputText value="Patient's Email Id:" styleClass="control-label"></h:outputText>
-                            <h:inputText value="#{apt2.appointment.emailId}" styleClass="form-control"></h:inputText>
+                            <h:inputText value="#{apt4.appointment3.appointment2.appointment.emailId}" styleClass="form-control"></h:inputText>
+                        </div>
+                    </div>
+                    <div class="row-group">
+                        <div class="col-lg-4 col-lg-offset-4">
+                            <h:outputText value="Sex" styleClass="control-label"></h:outputText>
+                            <h:selectOneRadio value="#{apt4.appointment3.appointment2.appointment.sex}">
+                                <f:selectItem itemLabel="Male" itemValue="Male"></f:selectItem>
+                                <f:selectItem itemLabel="Female" itemValue="Female"></f:selectItem>
+                            </h:selectOneRadio>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-lg-4 ">
+                        <div class="col-lg-4 col-lg-offset-4">
                             <h:outputText value="Diagnosis:" styleClass="control-label"></h:outputText>
-                            <h:inputText value="#{apt2.appointment.diagnosis}" styleClass="form-control"></h:inputText>
+                            <h:inputText value="#{apt4.appointment3.appointment2.appointment.diagnosis}" styleClass="form-control"></h:inputText>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-lg-4 ">
+                        <div class="col-lg-4 col-lg-offset-4">
                             <h:outputText value="Speciality" styleClass="control-label"></h:outputText>
-                            <h:inputText value="#{apt2.appointment.speciality}" styleClass="form-control"></h:inputText>
+                            <h:selectOneMenu value="#{apt4.appointment3.appointment2.appointment.speciality}" styleClass="form-control">
+                                <f:selectItems var="speciality" value="#{selectBoxes.speciality}"></f:selectItems>
+                            </h:selectOneMenu>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-lg-4 col-lg-offset-2">
+                        <div class="col-lg-4 col-lg-offset-4">
                             <h:commandButton value="NEXT" id="buttons" action="#{apt2.success()}" styleClass="btn btn-success col-lg-12 form-control"></h:commandButton>
                         </div>
                     </div>    

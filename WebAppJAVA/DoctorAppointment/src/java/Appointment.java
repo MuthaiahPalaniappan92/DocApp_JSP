@@ -1,4 +1,7 @@
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
@@ -19,10 +22,18 @@ import javax.faces.bean.SessionScoped;
 public class Appointment {
     private String patientName;
     private String emailId;
+    private String sex;
     private String diagnosis;
     private String speciality;
-    
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+    
     public String getPatientName() {
         return patientName;
     }
@@ -61,5 +72,21 @@ public class Appointment {
     
     public String patientsDetailsPage(){
         return "patientsDetails";
+    }
+    
+    public Connection getConnection(){
+        Connection con=null;
+        try {
+            Class.forName("com.ibm.as400.access.AS400JDBCDriver");
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        try {
+            con=DriverManager.getConnection("jdbc:as400:174.79.32.158", "IBM82", "IBM82");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return con;
     }
 }

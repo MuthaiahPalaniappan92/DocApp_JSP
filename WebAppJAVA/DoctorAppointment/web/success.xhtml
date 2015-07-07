@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Choose Time</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
@@ -23,40 +24,22 @@
                 
                 <h:form>
                     <div class="row form-group">
-                        <div class="col-lg-4 ">
-                            <h:outputText value="#{apt2.appointment.patientName}" styleClass="control-label"></h:outputText>
-                            
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-lg-4 ">
-                            <h:outputText value="#{apt2.appointment.emailId}" styleClass="control-label"></h:outputText>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-lg-4 ">
-                            <h:outputText value="#{apt2.appointment.diagnosis}" styleClass="control-label"></h:outputText>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-lg-4 ">
-                            <h:outputText value="#{apt3.appointment2.doctor}" styleClass="control-label"></h:outputText>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-lg-4 ">
-                            <h:outputText value="#{apt3.appointment2.date}" styleClass="control-label"></h:outputText>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-lg-4 ">
+                        <div class="col-lg-4 col-lg-offset-4">
                             <h:outputText value="Time" styleClass="control-label"></h:outputText>
-                            <h:inputText value="" styleClass="form-control"></h:inputText>
+                            <h:selectOneMenu value="#{apt4.appointment3.time}" styleClass="form-control">
+                                <f:selectItems var="timing" value="#{selectBoxes.getTime(apt4.appointment3.appointment2.date)}"></f:selectItems>
+                            </h:selectOneMenu>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-lg-4 col-lg-offset-2">
-                            <h:commandButton value="NEXT" id="buttons" action="#{apt3.success()}" styleClass="btn btn-success col-lg-12 form-control"></h:commandButton>
+                        <div class="col-lg-4 col-lg-offset-4">
+                            <h:outputText value="Email Alert   " styleClass="control-label"></h:outputText>
+                            <h:selectBooleanCheckbox value="#{apt4.appointment3.emailAlert}" ></h:selectBooleanCheckbox>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-lg-offset-4">
+                            <h:commandButton value="NEXT" id="buttons" action="#{apt4.success()}" styleClass="btn btn-success col-lg-12 form-control"></h:commandButton>
                         </div>
                     </div>    
                 </h:form>

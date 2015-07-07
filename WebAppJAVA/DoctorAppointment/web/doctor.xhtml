@@ -9,6 +9,14 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"></link>
         <link rel="stylesheet" href="resources/styles.css"></link>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.datepicker').datepicker();
+            });
+        </script>
+            
     </h:head>
     <h:body>
         <div class="container">
@@ -21,44 +29,26 @@
                 </div>
             </div>
             </header>
-                
+
                 <h:form>
                     <div class="row form-group">
-                        <div class="col-lg-4 ">
-                            <h:outputText value="#{apt2.appointment.patientName}" styleClass="control-label"></h:outputText>                            
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-lg-4 ">
-                            <h:outputText value="#{apt2.appointment.emailId}" styleClass="control-label"></h:outputText>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-lg-4 ">
-                            <h:outputText value="#{apt2.appointment.diagnosis}" styleClass="control-label"></h:outputText>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-lg-4 ">
-                            <h:outputText value="#{apt2.appointment.speciality}" styleClass="control-label"></h:outputText>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-lg-4 ">
+                        <div class="col-lg-4 col-lg-offset-4">
                             <h:outputText value="Docotor" styleClass="control-label"></h:outputText>
-                            <h:inputText value="#{apt3.appointment2.doctor}" styleClass="form-control"></h:inputText>
+                            <h:selectOneMenu value="#{apt4.appointment3.appointment2.doctor}" styleClass="form-control">
+                                <f:selectItems var="doctor" value="#{selectBoxes.getDoctor(apt4.appointment3.appointment2.appointment.speciality)}"></f:selectItems>
+                            </h:selectOneMenu>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-lg-4 ">
+                        <div class="col-lg-4 col-lg-offset-4">
                             <h:outputText value="Date" styleClass="control-label"></h:outputText>
-                            <h:inputText id="datte" label="Receipt Date" value="#{apt3.appointment2.date}" styleClass="form-control">
+                            <h:inputText id="datte" value="#{apt4.appointment3.appointment2.date}" styleClass="form-control datepicker">
                                 <f:convertDateTime pattern="MM-dd-yyyy"></f:convertDateTime>
                             </h:inputText>                            
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-lg-4 col-lg-offset-2">
+                        <div class="col-lg-4 col-lg-offset-4">
                             <h:commandButton value="NEXT" id="buttons" action="#{apt3.success()}" styleClass="btn btn-success col-lg-12 form-control"></h:commandButton>
                         </div>
                     </div>    

@@ -1,5 +1,8 @@
 
-import java.sql.Time;
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -25,8 +28,9 @@ public class AppointmentStep2 {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(String date) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        this.date= dateFormat.parse(date);
     }
     public String getDoctor() {
         return doctor;
