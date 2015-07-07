@@ -81,9 +81,11 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+            DB_Users db=new DB_Users();
+        if(request.getParameter("username")!=null && request.getParameter("password")!=null){
             String userName=request.getParameter("username");
             String password=request.getParameter("password");
-            DB_Users db=new DB_Users();
+            
             int loginCheck=db.doLogin(userName, password); 
             
         if(loginCheck==1){
@@ -97,6 +99,29 @@ public class LoginServlet extends HttpServlet {
                     request.setAttribute("loginFailedMessage", "UserName or Password you entered is incorrect");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
+        }
+            //Update info
+        if(request.getParameter("newAddress")!=null && request.getParameter("newPassword")!=null && request.getParameter("loginUser")!=null && request.getParameter("newCity")!=null){
+            String newAddress=request.getParameter("newAddress");
+            String newPassword=request.getParameter("newPassword");
+            String newCity=request.getParameter("newCity");
+            String updatableUser=request.getParameter("loginUser");
+            db.updateUserDetails(updatableUser, newPassword, newAddress, newCity);
+            request.getRequestDispatcher("chatbox.jsp").forward(request, response);
+        }
+        
+        if(request.getParameter("sender")!=null && request.getParameter("receiver")!= null&& request.getParameter("message")!= null){
+                String senderVar=request.getParameter("sender");
+                String receiverVar=request.getParameter("receiver");
+                String messageVar=request.getParameter("message");
+                Chat c=new Chat(senderVar,receiverVar,messageVar);
+                
+                //db.insertChat(c);
+                request.getRequestDispatcher("chatbox.jsp").forward(request, response);
+            }else{
+                request.setAttribute("emptyReceiverOrMessage", "Receiver or Message should not be empty");
+                request.getRequestDispatcher("chatbox.jsp").forward(request, response);
+        }
     }
 
     /**

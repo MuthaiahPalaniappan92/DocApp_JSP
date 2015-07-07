@@ -44,17 +44,17 @@ public class DB_Users {
     public void insertUsers(Users users){
         try {
             Connection con=getConnection();
-            String query="INSERT INTO users(username,firstname,lastname,emailid,mobilenumber,gender,address,city,password) VALUES(?,?,?,?,?,?,?,?,?)";
+            String query="INSERT INTO users(username,firstname,lastname,emailid,gender,address,city,password) VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement stmt=con.prepareStatement(query);
             stmt.setString(2, users.getFirstName());
             stmt.setString(3, users.getLastName());
             stmt.setString(1, users.getUserName());
             stmt.setString(4, users.getEmailId());
-            stmt.setInt(5, users.getMobileNumber());
-            stmt.setString(6, users.getGender());
-            stmt.setString(7, users.getAddress());
-            stmt.setString(8, users.getCity());
-            stmt.setString(9, users.getPassword());
+            
+            stmt.setString(5, users.getGender());
+            stmt.setString(6, users.getAddress());
+            stmt.setString(7, users.getCity());
+            stmt.setString(8, users.getPassword());
             stmt.executeUpdate();
             this.isSignedUp=true;
         } catch (SQLException e) {
@@ -86,23 +86,6 @@ public class DB_Users {
             String query="SELECT COUNT(*) count FROM users WHERE emailid=?";
             PreparedStatement stmt=con.prepareStatement(query);
             stmt.setString(1, emailId);
-            ResultSet rs=stmt.executeQuery();
-            while(rs.next()){
-                rowCount=rs.getInt("count");
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return rowCount;
-    }
-    
-    public int checkingDuplicateMobileNumber(int mobileNumber){
-        int rowCount=0;
-        try {
-            Connection con=getConnection();
-            String query="SELECT COUNT(*) count FROM users WHERE mobilenumber=?";
-            PreparedStatement stmt=con.prepareStatement(query);
-            stmt.setInt(1, mobileNumber);
             ResultSet rs=stmt.executeQuery();
             while(rs.next()){
                 rowCount=rs.getInt("count");
@@ -167,17 +150,42 @@ public class DB_Users {
         return users;
     }
     
-    public void insertChat(String message,String sender,String receiver){
+    public Users getUser(String userName){
+        Users u=new Users();
         try {
             Connection con=getConnection();
-            String query="INSERT INTO chat (sender,reciver,message) VALUES(?,?,?) ";
+            String query="SELECT address,city,password FROM users WHERE username=?";
             PreparedStatement stmt=con.prepareStatement(query);
-            stmt.setString(1, sender);
-            stmt.setString(2, receiver);
-            stmt.setString(3, message);
+            stmt.setString(1, userName);
+            ResultSet rs=stmt.executeQuery();
+            while(rs.next()){
+                String address=rs.getString("address");
+                String city=rs.getString("city");
+                String oldpassword=rs.getString("password");
+                u.setCity(city);
+                u.setPassword(oldpassword);
+                u.setAddress(address);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error");
+        }
+        return u;
+    }
+    
+    public void updateUserDetails(String userName,String userPassword,String address,String city){
+        try {
+            Connection con=getConnection();
+            String query="UPDATE users SET (address,city,password)=(?,?,?) WHERE username=?";
+            PreparedStatement stmt=con.prepareStatement(query);
+            stmt.setString(1, address);
+            stmt.setString(2, city);
+            stmt.setString(3, userPassword);
+            stmt.setString(4, userName);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error");
         }
     }
+    
+    
 }

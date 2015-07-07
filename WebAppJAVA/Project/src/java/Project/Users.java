@@ -21,7 +21,6 @@ public class Users {
     String lastName;
     String userName;
     String emailId;
-    int mobileNumber;
     String gender;
     String address;
     String city;
@@ -31,12 +30,11 @@ public class Users {
         
     }
     
-    public Users(String firstName,String lastName,String userName,String emailId,int mobileNumber,String gender,String address,String city,String password){
+    public Users(String firstName,String lastName,String userName,String emailId,String gender,String address,String city,String password){
         this.firstName=firstName;
         this.lastName=lastName;
         this.userName=userName;
-        this.emailId=emailId;
-        this.mobileNumber=mobileNumber;
+        this.emailId=emailId;        
         this.gender=gender;
         this.address=address;
         this.city=city;
@@ -90,14 +88,6 @@ public class Users {
 
     public void setEmailId(String emailId) {
         this.emailId = emailId;
-    }
-
-    public int getMobileNumber() {
-        return mobileNumber;
-    }
-
-    public void setMobileNumber(int mobileNumber) {
-        this.mobileNumber = mobileNumber;
     }
 
     public String getGender() {

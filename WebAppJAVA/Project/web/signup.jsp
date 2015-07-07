@@ -123,15 +123,6 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-2">
-                        <label for="contact">Contact No.</label>
-                        <label for="contact" style="color: red">*</label>
-                    </div>
-                    <div class="col-lg-4">
-                        <input type="text" name="contact" class="form-control" placeholder="Enter your Contact No."/>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-lg-2">
                         <label for="address">Address</label>
                         <label for="address" style="color: red">*</label>
                     </div>
@@ -154,6 +145,10 @@
                     </div>
                 </div>
             </form>
+                
+            <div class="error">
+                <div class="well" style="color:red">${duplicateUserName}</div>
+            </div>
         </div>
         </div>
 </html>

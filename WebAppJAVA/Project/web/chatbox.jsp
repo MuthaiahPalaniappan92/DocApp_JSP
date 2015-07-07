@@ -47,6 +47,7 @@
                     try{
                         userName=session.getAttribute("username").toString();
                         out.println("<p><b>WELCOME "+userName+"</b></p>");
+                        
             //          System.out.println(d.getAllUserName().toString());
                     }catch(Exception e){
                         response.sendRedirect("login.jsp");
@@ -65,7 +66,7 @@
                 });
             </script>
             
-            <form action="ChatServlet" method="POST">
+            <form action="LoginServlet" method="POST">
                 
                 <div class="row form-group">
                     <div class="col-xs-1 ">
@@ -93,9 +94,11 @@
                     </div>    
                 </div>   
                 
-                
-                
             </form>
+                    <div class="well">
+                        ${emptyReceiverOrMessage}
+                    </div>      
+                    
         </div>
         
     </body>

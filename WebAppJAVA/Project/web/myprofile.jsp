@@ -40,16 +40,54 @@
             <div class="well">
                 
                 <%
-                    
+                    String user="";
                     try{
-                        String user=session.getAttribute("username").toString();
-                        System.out.println(user);
+                        user=session.getAttribute("username").toString();
+                        
                     }catch(NullPointerException e){
                         response.sendRedirect("login.jsp");
                     }
                     
+                    DB_Users d=new DB_Users();
+                    Users u=d.getUser(user);
+                    String address=u.getAddress();
+                    String city=u.getCity();
+                    String oldPassword=u.getPassword();
                 %>
+                <h3>Welcome <%=user%>, you can update your info, if necessary</h3>
             </div>
+            <form action="LoginServlet" method="post">
+                <div class="row form-group">
+                    <div class="col-lg-2">
+                        <label for="newAddress">Address</label>
+                    </div>
+                    <div class="col-lg-4">
+                        <input type="text" name="newAddress" class="form-control" value="<%=address%>"/>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-2">
+                        <label for="newCity">City</label>
+                    </div>
+                    <div class="col-lg-4">
+                        <input type="text" name="newCity" class="form-control" value="<%=city%>"/>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-2">
+                        <label for="newPassword">Password</label>
+                    </div>
+                    <div class="col-lg-4">
+                        <input type="text" name="newPassword" class="form-control" value="<%=oldPassword%>"/>
+                        <input type="hidden" name="loginUser"  value="<%=user%>"/>
+                    </div>
+                </div>    
+                <div class="row form-group">
+                    <div class="col-lg-4 col-lg-offset-2">
+                        <input type="submit" value="Update" class="btn btn-default col-lg-6"/>
+                    </div>
+                </div>
+            </form>
         </div>
     </body>
 </html>

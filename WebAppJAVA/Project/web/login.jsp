@@ -46,7 +46,6 @@
             String lastName=request.getParameter("lastName");
             String userName=request.getParameter("userName");
             String emailId=request.getParameter("email");
-            int mobileNumber=3;//Integer.parseInt(request.getParameter("contact"));
             String gender=request.getParameter("gender");
             String address=request.getParameter("address");
             String city=request.getParameter("city");
@@ -55,19 +54,15 @@
             DB_Users db1=new DB_Users();
             int userNameRowCount=db1.checkingDuplicateUserName(userName);
             int emailIdRowCount=db1.checkingDuplicateEmailId(emailId);
-            int mobileNumberCount=db1.checkingDuplicateMobileNumber(mobileNumber);
-            Users u=new Users(firstName,lastName,userName,emailId,10,gender,address,city,password);
+            Users u=new Users(firstName,lastName,userName,emailId,gender,address,city,password);
             if(userNameRowCount!=0){
                 //Checking for UserName Duplicates
-                out.println("User Name "+userName+" already Used by someone else. Please try with someother");
+                request.setAttribute("duplicateUserName", "User Name "+userName+" already Used by someone else. Please try with someother");
                 request.getRequestDispatcher("signup.jsp").forward(request, response);
             }else if(emailIdRowCount!=0){
                 //Checking for Email Id Duplicates
-                out.println("Email Id "+emailId+"  Used by someone else. Please try with someother");
+                request.setAttribute("duplicateUserName", "Email Id "+emailId+"  Used by someone else. Please try with someother");
                 request.getRequestDispatcher("signup.jsp").forward(request, response);
-            }else if(mobileNumberCount!=0){
-                //Checking for Mobile Number Duplicates
-                out.println("Email Id "+emailId+"  Used by someone else. Please try with someother");
             }else{            
                 //Inserting Sign Up Form
                 DB_Users db=new DB_Users();
