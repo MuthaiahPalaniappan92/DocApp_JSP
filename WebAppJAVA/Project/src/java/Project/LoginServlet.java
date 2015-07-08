@@ -114,9 +114,8 @@ public class LoginServlet extends HttpServlet {
                 String senderVar=request.getParameter("sender");
                 String receiverVar=request.getParameter("receiver");
                 String messageVar=request.getParameter("message");
-                Chat c=new Chat(senderVar,receiverVar,messageVar);
-                
-                //db.insertChat(c);
+                Chat c=new Chat(senderVar,receiverVar,messageVar);                
+                db.insertChat(c);
                 request.getRequestDispatcher("chatbox.jsp").forward(request, response);
             }else{
                 request.setAttribute("emptyReceiverOrMessage", "Receiver or Message should not be empty");

@@ -11,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import org.json.simple.JSONArray;
 
 
@@ -185,6 +187,38 @@ public class DB_Users {
         } catch (SQLException e) {
             System.out.println("Error");
         }
+    }
+    
+    public void insertChat(Chat c){
+        try {
+            Connection con=getConnection();
+            String query="INSERT INTO chat_box(sender,receiver,message) VALUES(?,?,?)";
+            PreparedStatement stmt=con.prepareStatement(query);
+            stmt.setString(1, c.getSender());
+            stmt.setString(2, c.getReceiver());
+            stmt.setString(3, c.getMessage());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error");
+        }
+    }
+    
+    public List displayNumberOfTotalConversation(String user){
+        LinkedList<String> userList=new LinkedList<String>();
+        try {
+           Connection con=getConnection() ;
+           String query="select receiver from chat_box where sender='aditya7' group by receiver ORDER BY dateupdated DESC UNION select sender from chat_box where receiver='aditya7' group by sender order by dateupdated DESC";
+           PreparedStatement stmt=con.prepareStatement(query);
+           stmt.setString(1, user);
+           stmt.setString(2, user);
+           ResultSet rs=stmt.executeQuery();
+           while(rs.next()){
+               userList.add(rs.getString("receiver"));
+           }
+        } catch (SQLException e) {
+            System.out.println("Error");
+        }
+        return userList;
     }
     
     
