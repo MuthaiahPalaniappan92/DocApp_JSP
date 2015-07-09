@@ -77,13 +77,14 @@ public class DB_Connection {
         return doctors;
     }
     
-    public List<String> getTime(Date date){
+    public List<String> getTime(String date,String doctor){
         LinkedList<String> timing=new LinkedList<String>();
         try {
             Connection con=getConnection();
-            String query="select available_timing from timing where available_timing NOT IN (SELECT available_timing FROM timing t RIGHT OUTER JOIN pt_appt_details p ON t.available_timing=p.apttimeWHERE apt_date=?)";
+            String query="select available_timing from timing where available_timing NOT IN (SELECT available_timing FROM timing t RIGHT OUTER JOIN pt_appt_details p ON t.available_timing=p.apttime WHERE p.apt_date=? AND p.doc_name=?)";
             PreparedStatement stmt=con.prepareStatement(query);
-            stmt.setDate(1, (java.sql.Date) date);
+            stmt.setString(1,date);
+            stmt.setString(2, doctor);
             ResultSet rs=stmt.executeQuery();
             while(rs.next()){
                 timing.add(rs.getString("available_timing"));

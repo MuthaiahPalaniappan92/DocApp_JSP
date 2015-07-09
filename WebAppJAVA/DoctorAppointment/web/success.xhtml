@@ -27,7 +27,7 @@
                         <div class="col-lg-4 col-lg-offset-4">
                             <h:outputText value="Time" styleClass="control-label"></h:outputText>
                             <h:selectOneMenu value="#{apt4.appointment3.time}" styleClass="form-control">
-                                <f:selectItems var="timing" value="#{selectBoxes.getTime(apt4.appointment3.appointment2.date)}"></f:selectItems>
+                                <f:selectItems var="timing" value="#{selectBoxes.getTime(apt4.appointment3.appointment2.date,apt4.appointment3.appointment2.doctor)}"></f:selectItems>
                             </h:selectOneMenu>
                         </div>
                     </div>

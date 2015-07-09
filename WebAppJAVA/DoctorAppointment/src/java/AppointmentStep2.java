@@ -22,15 +22,14 @@ import javax.faces.bean.SessionScoped;
 public class AppointmentStep2 {
     private Appointment appointment=new Appointment();
     private String doctor;           
-    private Date date;
+    private String date;
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
     public void setDate(String date) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        this.date= dateFormat.parse(date);
+        this.date=date;
     }
     public String getDoctor() {
         return doctor;
