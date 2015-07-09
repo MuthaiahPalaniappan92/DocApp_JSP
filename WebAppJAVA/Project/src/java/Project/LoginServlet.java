@@ -6,14 +6,23 @@
 
 package Project;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.fileupload.FileItemIterator;
+import org.apache.commons.fileupload.FileItemStream;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
  *
@@ -121,6 +130,10 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("emptyReceiverOrMessage", "Receiver or Message should not be empty");
                 request.getRequestDispatcher("chatbox.jsp").forward(request, response);
         }
+        
+       
+        
+        
     }
 
     /**
@@ -132,5 +145,7 @@ public class LoginServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+     
 
 }

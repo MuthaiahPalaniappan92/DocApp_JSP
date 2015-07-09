@@ -11,8 +11,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
+
 import org.json.simple.JSONArray;
 
 
@@ -203,11 +204,11 @@ public class DB_Users {
         }
     }
     
-    public List displayNumberOfTotalConversation(String user){
-        LinkedList<String> userList=new LinkedList<String>();
+    public ArrayList getChatList(String user){
+        ArrayList<String> userList=new ArrayList<String>();
         try {
            Connection con=getConnection() ;
-           String query="select receiver from chat_box where sender='aditya7' group by receiver ORDER BY dateupdated DESC UNION select sender from chat_box where receiver='aditya7' group by sender order by dateupdated DESC";
+           String query="select receiver from chat_box where sender='?' group by receiver  UNION select sender from chat_box where receiver='?' group by sender";
            PreparedStatement stmt=con.prepareStatement(query);
            stmt.setString(1, user);
            stmt.setString(2, user);

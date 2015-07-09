@@ -4,9 +4,17 @@
         <servlet-name>SignUpServlet</servlet-name>
         <servlet-class>SignUpServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <servlet-class>Project.FileUploadServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpServlet</servlet-name>
         <url-pattern>/SignUpServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <url-pattern>/FileUploadServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

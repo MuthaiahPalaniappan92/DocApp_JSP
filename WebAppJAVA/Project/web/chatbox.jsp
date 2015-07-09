@@ -4,6 +4,11 @@
     Author     : c0652674
 --%>
 
+
+<%@page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.LinkedList"%>
+<%@page import="java.util.List"%>
 <%@page import="Project.DB_Users"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -31,7 +36,7 @@
                         <li><a href="../Project/signup.jsp" data-toggle="tab">Sign Up</a></li>
                         <li><a href="" data-toggle="tab">Log In</a></li>
                         <li class="active"><a href="chatbox.jsp" data-toggle="tab">Chat Box</a></li>
-			<li><a href="#contact" data-toggle="tab">Contact Us</a></li>
+			<li><a href="../Project/productpost.jsp" data-toggle="tab">Contact Us</a></li>
                         <li><a href="../Project/LoginServlet" data-toggle="tab">Log Out</a></li>
 		    </ul>
                 </div>
@@ -98,7 +103,19 @@
                     <div class="well">
                         ${emptyReceiverOrMessage}
                     </div>      
+                        
                     
+                    <%
+                        ArrayList conversationList=d.getChatList(userName);
+                        for(int i=0;i<conversationList.size();i++){
+                            out.println(conversationList.get(i));
+                        }
+                    %>
+                    <jsp:useBean id="db" class="Project.DB_Users"></jsp:useBean>
+                    <c:forEach var="conversationList" items="${db.getChatList(userName)}">
+                        <c:out value="${conversationList}"></c:out>
+                    </c:forEach>
+                           
         </div>
         
     </body>
