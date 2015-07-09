@@ -14,6 +14,10 @@ public class Chat {
     String sender;
     String receiver;
     String message;
+    
+    public Chat(){
+        
+    }
 
     public Chat(String sender, String receiver, String message) {
         this.sender = sender;

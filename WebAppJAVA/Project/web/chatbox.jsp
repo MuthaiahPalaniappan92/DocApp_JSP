@@ -106,15 +106,15 @@
                         
                     
                     <%
-                        ArrayList conversationList=d.getChatList(userName);
+                        ArrayList conversationList =d.getChatList(userName);
                         for(int i=0;i<conversationList.size();i++){
-                            out.println(conversationList.get(i));
-                        }
+                            
                     %>
-                    <jsp:useBean id="db" class="Project.DB_Users"></jsp:useBean>
-                    <c:forEach var="conversationList" items="${db.getChatList(userName)}">
-                        <c:out value="${conversationList}"></c:out>
-                    </c:forEach>
+                        <form>
+                            <input type="button" value="<%=conversationList.get(i)%>">
+                        </form>    
+                        <%}
+                    %>
                            
         </div>
         
