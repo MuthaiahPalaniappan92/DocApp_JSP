@@ -83,6 +83,7 @@ public class FileUploadServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         response.setContentType("text/html");
+        String path="";
         boolean isMultiPart=ServletFileUpload.isMultipartContent(request);
         if(isMultiPart){
             ServletFileUpload upload=new ServletFileUpload();
@@ -102,7 +103,7 @@ public class FileUploadServlet extends HttpServlet {
                         map.put(fieldName, value);
                     }else{
                         //do file upload and store the path as variable
-                        String path=getServletContext().getRealPath("/");
+                        path=getServletContext().getRealPath("/");
                         //will write a method and we will call here
                         if(processFile(path,item)){
                             response.getWriter().println("File uploaded successfully");
@@ -114,16 +115,19 @@ public class FileUploadServlet extends HttpServlet {
                     String category="";
                     String keywords="";
                     String cost="";
+                    String imagess="";
                     for(Map.Entry<String,String> entry:map.entrySet()){
-                        if(entry.getKey().equals("fname")){
+                        if(entry.getKey().equals("category")){
                             category=entry.getValue();
-                        }else if(entry.getKey().equals("lname")){
+                        }else if(entry.getKey().equals("keywords")){
                             keywords=entry.getValue();
                         }else if(entry.getKey().equals("cost")){
                             cost=entry.getValue();
+                        }else if(entry.getKey().equals("imagess")){
+                            imagess=entry.getValue();
                         }
                     }
-                    response.getWriter().println(category+keywords+cost);
+                    response.getWriter().println(category+keywords+cost+path+imagess+"\\"+category);
                 }
             } catch (FileUploadException e) {
                 e.printStackTrace();

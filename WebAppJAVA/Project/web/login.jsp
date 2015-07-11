@@ -32,7 +32,7 @@
                         <li><a href="../Project/signup.jsp" data-toggle="tab">Sign Up</a></li>
                         <li class="active"><a href="" data-toggle="tab">Log In</a></li>
                         <li><a href="chatbox.jsp" data-toggle="tab">Chat Box</a></li>
-			<li><a href="../Project/productpost.jsp" data-toggle="tab">Contact Us</a></li>
+			<li><a href="../Project/productpost.jsp" data-toggle="tab">Product Posting</a></li>
                         <li><a href="../Project/LoginServlet" data-toggle="tab">Log Out</a></li>
 		    </ul>
                 </div>
@@ -40,7 +40,8 @@
            </header> 
         
          <div class="container">
-        <%  //Sign Up Functionalities
+        <%  
+            //Sign Up Functionalities
             //Variables
             String firstName=request.getParameter("firstName");
             String lastName=request.getParameter("lastName");

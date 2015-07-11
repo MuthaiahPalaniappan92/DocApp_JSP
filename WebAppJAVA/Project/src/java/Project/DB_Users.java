@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
+
 
 import org.json.simple.JSONArray;
 
@@ -52,8 +52,7 @@ public class DB_Users {
             stmt.setString(2, users.getFirstName());
             stmt.setString(3, users.getLastName());
             stmt.setString(1, users.getUserName());
-            stmt.setString(4, users.getEmailId());
-            
+            stmt.setString(4, users.getEmailId());            
             stmt.setString(5, users.getGender());
             stmt.setString(6, users.getAddress());
             stmt.setString(7, users.getCity());
@@ -135,6 +134,23 @@ public class DB_Users {
             System.out.println(e.getMessage());
         }
         return rowCount;
+    }
+    
+    public String getEmailIdOfLoginUser(String userName){
+        String emailId="";
+        try {
+            Connection con=getConnection();
+            String query="SELECT emailid FROM users WHERE username=? ";
+            PreparedStatement stmt=con.prepareStatement(query);
+            stmt.setString(1, userName);
+            ResultSet rs=stmt.executeQuery();
+            while(rs.next()){
+                emailId=rs.getString("emailid");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return emailId;
     }
     
     public JSONArray getAllUserName(String sessionUser){

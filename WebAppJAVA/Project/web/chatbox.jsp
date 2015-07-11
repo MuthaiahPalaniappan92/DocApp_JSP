@@ -36,7 +36,7 @@
                         <li><a href="../Project/signup.jsp" data-toggle="tab">Sign Up</a></li>
                         <li><a href="" data-toggle="tab">Log In</a></li>
                         <li class="active"><a href="chatbox.jsp" data-toggle="tab">Chat Box</a></li>
-			<li><a href="../Project/productpost.jsp" data-toggle="tab">Contact Us</a></li>
+			<li><a href="../Project/productpost.jsp" data-toggle="tab">Product Posting</a></li>
                         <li><a href="../Project/LoginServlet" data-toggle="tab">Log Out</a></li>
 		    </ul>
                 </div>
@@ -110,8 +110,8 @@
                         for(int i=0;i<conversationList.size();i++){
                             
                     %>
-                        <form>
-                            <input type="button" value="<%=conversationList.get(i)%>">
+                        <form action="FileUploadServlet">
+                            <a href="FileUploadServlet"><input type="button" value="<%=conversationList.get(i)%>" class="btn btn-lg-6 btn-default"></a>
                         </form>    
                         <%}
                     %>

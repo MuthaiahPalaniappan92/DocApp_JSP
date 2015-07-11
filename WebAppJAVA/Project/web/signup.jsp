@@ -43,7 +43,7 @@
                         <li class="active"><a href="" data-toggle="tab">Sign Up</a></li>
                         <li><a href="../Project/login.jsp" data-toggle="tab">Log In</a></li>
                         <li><a href="chatbox.jsp" data-toggle="tab">Chat Box</a></li>
-			<li><a href="../Project/productpost.jsp" data-toggle="tab">Contact Us</a></li>
+			<li><a href="../Project/productpost.jsp" data-toggle="tab">Product Posting</a></li>
                         <li><a href="../Project/LoginServlet" data-toggle="tab">Log Out</a></li>
 		    </ul>
                 </div>

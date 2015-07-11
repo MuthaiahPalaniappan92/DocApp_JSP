@@ -6,6 +6,7 @@
 
 package Project;
 
+import EmailSender.MailSender;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,6 +32,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
+    @EJB
+    private MailSender mail;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -105,6 +109,13 @@ public class LoginServlet extends HttpServlet {
                     request.getRequestDispatcher("myprofile.jsp").forward(request, response);
                     
                 }else{
+                    String toEmail=db.getEmailIdOfLoginUser(userName);
+                    String fromEmail="muthaiahpalaniappan92@gmail.com";
+                    String emailUserName="muthaiahpalaniappan92";
+                    String emailPassword="Muthaiah92";
+                    String subject="Sign In Attempt Blocked";
+                    String message="Someone have attempted to login your account with this password ("+password+"). If this was you, then that\'s okay ., else please change your password ";
+                    mail.sendEmailForRegistration(toEmail, fromEmail, emailUserName, emailPassword, subject, message);
                     request.setAttribute("loginFailedMessage", "UserName or Password you entered is incorrect");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }

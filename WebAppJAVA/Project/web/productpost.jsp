@@ -28,8 +28,8 @@
                         <li><a href="../Project/myprofile.jsp" data-toggle="tab">My Profile</a></li>
                         <li><a href="../Project/signup.jsp" data-toggle="tab">Sign Up</a></li>
                         <li><a href="" data-toggle="tab">Log In</a></li>
-                        <li class="active"><a href="chatbox.jsp" data-toggle="tab">Chat Box</a></li>
-			<li><a href="../Project/productpost.jsp" data-toggle="tab">Contact Us</a></li>
+                        <li><a href="chatbox.jsp" data-toggle="tab">Chat Box</a></li>
+			<li  class="active"><a href="../Project/productpost.jsp" data-toggle="tab">Product Posting</a></li>
                         <li><a href="../Project/LoginServlet" data-toggle="tab">Log Out</a></li>
 		    </ul>
                 </div>
@@ -72,7 +72,7 @@
                     <label for="image">Image:</label>
                 </div> 
                 <div class="col-lg-4">
-                    <input type="file" class="form-control" name="image"/>
+                    <input type="file" class="form-control" name="imagess"/>
                 </div>    
             </div>
             </div>
