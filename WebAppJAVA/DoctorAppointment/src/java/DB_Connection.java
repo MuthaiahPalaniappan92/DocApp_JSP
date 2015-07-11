@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -92,5 +91,41 @@ public class DB_Connection {
         } catch (SQLException e) {
         }        
         return timing;
+    }
+    
+    public void bookAppointment(String aptDate, String ptName, String sex, String diagnosis, String speciality, String mailId, String docName, String apt_time, String emailAlert){
+        try {
+            Connection con=getConnection();
+            String query="INSERT INTO pt_appt_details(apt_date,pt_name,sex,diagnosis,speciality,mailid,doc_name,apttime,email_alert) VALUES(?,?,?,?,?,?,?,?,?)";
+            PreparedStatement stmt=con.prepareStatement(query);
+            stmt.setString(1, aptDate);
+            stmt.setString(2, ptName);
+            stmt.setString(3, sex);
+            stmt.setString(4, diagnosis);
+            stmt.setString(5,speciality);
+            stmt.setString(6, mailId);
+            stmt.setString(7, docName);
+            stmt.setString(8, apt_time);
+            stmt.setString(9, emailAlert);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+    
+    public LinkedList<String> getAllAppointmentEmailListByDay(String date){
+        LinkedList<String> listOfEmails=new LinkedList<String>();
+        try {
+            Connection con=getConnection();
+            String query="SELECT mailid FROM pt_appt_details WHERE apt_date=?";
+            PreparedStatement stmt=con.prepareStatement(query);
+            stmt.setString(1, date);
+            ResultSet rs=stmt.executeQuery();
+            while(rs.next()){
+                listOfEmails.add(rs.getString("mailid"));
+            }
+        } catch (SQLException e) {
+            
+        }
+        return listOfEmails;
     }
 }

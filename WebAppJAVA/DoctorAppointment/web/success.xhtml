@@ -39,7 +39,12 @@
                     </div>
                     <div class="row form-group">
                         <div class="col-lg-4 col-lg-offset-4">
-                            <h:commandButton value="NEXT" id="buttons" action="#{apt4.success()}" styleClass="btn btn-success col-lg-12 form-control"></h:commandButton>
+                            <h:commandButton value="BOOK AN APPOINTMENT" id="submit" action="#{selectBoxes.bookAppointment(apt4.appointment3.appointment2.date, apt4.appointment3.appointment2.appointment.patientName, apt4.appointment3.appointment2.appointment.sex, apt4.appointment3.appointment2.appointment.diagnosis, apt4.appointment3.appointment2.appointment.speciality, apt4.appointment3.appointment2.appointment.emailId, apt4.appointment3.appointment2.doctor, apt4.appointment3.time, apt4.appointment3.emailAlert)}" styleClass="btn btn-success col-lg-12 form-control"></h:commandButton>
+                        </div>
+                    </div>    
+                    <div class="row form-group">
+                        <div class="col-lg-4 col-lg-offset-4">
+                            <h:commandButton value="VIEW DETAILS" id="buttons" action="#{apt4.success()}" styleClass="btn btn-success col-lg-12 form-control"></h:commandButton>
                         </div>
                     </div>    
                 </h:form>
