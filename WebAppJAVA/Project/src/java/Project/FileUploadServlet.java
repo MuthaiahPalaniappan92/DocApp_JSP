@@ -123,11 +123,11 @@ public class FileUploadServlet extends HttpServlet {
                             keywords=entry.getValue();
                         }else if(entry.getKey().equals("cost")){
                             cost=entry.getValue();
-                        }else if(entry.getKey().equals("imagess")){
+                        }else if(entry.getKey().equals("fileName")){
                             imagess=entry.getValue();
                         }
                     }
-                    response.getWriter().println(category+keywords+cost+path+imagess+"\\"+category);
+                    response.getWriter().println(path+"images\\"+imagess);
                 }
             } catch (FileUploadException e) {
                 e.printStackTrace();

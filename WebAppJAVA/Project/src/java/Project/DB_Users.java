@@ -224,15 +224,13 @@ public class DB_Users {
         ArrayList<String> userList=new ArrayList<String>();
         try {
            Connection con=getConnection() ;
-           String query="SELECT DISTINCT receiver FROM chat_box WHERE sender=? UNION select sender from chat_box where receiver=?";
-           
+           String query="SELECT DISTINCT receiver FROM chat_box WHERE sender=? UNION select sender receiver from chat_box where receiver=?";
            PreparedStatement stmt=con.prepareStatement(query);
            stmt.setString(1, user);
            stmt.setString(2, user);
            ResultSet rs=stmt.executeQuery();
            while(rs.next()){
                userList.add(rs.getString("receiver"));
-               userList.add(rs.getString("sender"));
            }
         } catch (SQLException e) {
             System.out.println("Error");
@@ -240,14 +238,16 @@ public class DB_Users {
         return userList;
     }
     
-    public ResultSet getParticularConversation(String opponent){
+    public ResultSet getParticularConversation(String opponent, String loginUser){
         ResultSet rs = null;
         try {
             Connection con=getConnection();
-            String query="SELECT message,dateupdated,sender,receiver FROM chat_box WHERE receiver=? OR sender=? ORDER BY  dateupdated DESC";
+            String query="SELECT message,dateupdated,sender,receiver FROM chat_box WHERE (receiver=? OR receiver=?) OR (sender=? OR sender=?) ORDER BY  dateupdated DESC";
             PreparedStatement stmt=con.prepareStatement(query);
             stmt.setString(1, opponent);
-            stmt.setString(2, opponent);
+            stmt.setString(2, loginUser);
+            stmt.setString(3, opponent);
+            stmt.setString(4, loginUser);
             rs=stmt.executeQuery();
         } catch (SQLException e) {
             System.out.println("Error");

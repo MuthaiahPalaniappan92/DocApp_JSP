@@ -69,6 +69,16 @@
             <div class="form-group">
             <div class="row">
                 <div class="col-lg-2 col-sm-offset-1">
+                    <label for="fileName">File Name with Extension</label>
+                </div> 
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" name="fileName"/>
+                </div>    
+            </div>
+            </div>
+            <div class="form-group">
+            <div class="row">
+                <div class="col-lg-2 col-sm-offset-1">
                     <label for="image">Image:</label>
                 </div> 
                 <div class="col-lg-4">

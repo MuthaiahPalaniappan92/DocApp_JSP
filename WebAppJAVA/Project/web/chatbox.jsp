@@ -100,20 +100,19 @@
                 </div>   
                 
             </form>
-                    <div class="well">
-                        ${emptyReceiverOrMessage}
-                    </div>      
+            <div class="error">
+                <div class="well" style="color:red">${emptyReceiverOrMessage}</div>
+            </div>    
                         
                     
-                    <%
+                    <%  
                         ArrayList conversationList =d.getChatList(userName);
-                        for(int i=0;i<conversationList.size();i++){
-                            
-                    %>
-                        <form action="FileUploadServlet">
-                            <a href="FileUploadServlet"><input type="button" value="<%=conversationList.get(i)%>" class="btn btn-lg-6 btn-default"></a>
-                        </form>    
-                        <%}
+                        if(conversationList.size()!=0){
+                            for(int i=0;i<conversationList.size();i++){
+                                out.println("<a href='FileUploadServlet'><input type='button' value='"+conversationList.get(i)+"' class='btn btn-lg-6 btn-default '></a><br>");
+                            }
+                        }
+                        
                     %>
                            
         </div>
