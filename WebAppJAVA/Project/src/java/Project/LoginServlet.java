@@ -142,7 +142,9 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("chatbox.jsp").forward(request, response);
         }
         
-       
+       if(request.getParameter("user")!=null && request.getParameter("opponent")!=null){
+            db.deleteConversation(request.getParameter("user"), request.getParameter("opponent"));
+        }
         
         
     }

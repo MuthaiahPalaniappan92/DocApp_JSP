@@ -109,7 +109,12 @@
                         ArrayList conversationList =d.getChatList(userName);
                         if(conversationList.size()!=0){
                             for(int i=0;i<conversationList.size();i++){
-                                out.println("<a href='FileUploadServlet'><input type='button' value='"+conversationList.get(i)+"' class='btn btn-lg-6 btn-default '></a><br>");
+                                out.println("<form action='LoginServlet' method='post'>");
+                                out.println("<input type='hidden' name='user' value='"+userName+"'");
+                                out.println("<input type='hidden' name='opponent' value='"+conversationList.get(i)+"'/>");
+                                out.println("<p><a href='chatdisplay.jsp?opponent="+conversationList.get(i)+"' name='opponent'><input type='button' value='"+conversationList.get(i)+"' class='btn btn-lg-6 btn-default '></a>");
+                                out.println("<input type='submit' value='Delete' class='btn btn-lg-6 btn-default '/></p>");
+                                out.println("</form>");
                             }
                         }
                         

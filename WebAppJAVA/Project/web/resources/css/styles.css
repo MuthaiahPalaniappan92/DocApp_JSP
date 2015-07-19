@@ -19,3 +19,16 @@ h:body{
 .chatbuttons{
     width: 100px;
 }
+.text_Box{
+    border:2px solid black;
+    margin-left: 550px;
+    margin-right: 550px;
+}
+.messages{
+    padding-left: 20px;
+    padding-right:20px;
+}
+.chat{
+    margin-left: 450px;    
+    margin-top: 20px;
+}

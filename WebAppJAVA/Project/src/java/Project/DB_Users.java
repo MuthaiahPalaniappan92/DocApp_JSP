@@ -242,7 +242,7 @@ public class DB_Users {
         ResultSet rs = null;
         try {
             Connection con=getConnection();
-            String query="SELECT message,dateupdated,sender,receiver FROM chat_box WHERE (receiver=? OR receiver=?) OR (sender=? OR sender=?) ORDER BY  dateupdated DESC";
+            String query="SELECT message,dateupdated,sender,receiver FROM chat_box WHERE (receiver=? OR receiver=?) OR (sender=? OR sender=?)";
             PreparedStatement stmt=con.prepareStatement(query);
             stmt.setString(1, opponent);
             stmt.setString(2, loginUser);
@@ -253,5 +253,19 @@ public class DB_Users {
             System.out.println("Error");
         }
         return rs;
+    }
+    
+    public void deleteConversation(String userName, String opponent){
+        try {
+            Connection con=getConnection();
+            String query="DELETE * FROM chat_box WHERE sender IN(?,?) AND receiver IN(?,?) ";
+            PreparedStatement stmt=con.prepareStatement(query);
+            stmt.setString(1, userName);
+            stmt.setString(2, opponent);
+            stmt.setString(3, userName);
+            stmt.setString(4, opponent);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+        }
     }
 }
