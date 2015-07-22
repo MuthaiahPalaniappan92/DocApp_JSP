@@ -85,7 +85,7 @@
                     <label for="username" style="color:red">*</label>
                 </div> 
                 <div class="col-lg-4">
-                    <input type="text" class="form-control" id="username" name="username"/>
+                    <input type="text" value="<%=session.getAttribute("email")%>" class="form-control" id="username" name="username"/>
                 </div>    
             </div> 
             </div>
@@ -105,6 +105,10 @@
                     <input type="submit" value="Submit" class="btn btn-default col-lg-6"/>
                 </div>
             </div>
+            <div class="col-lg-4 col-lg-offset-3">
+                <a href="forgotusername.jsp">Forgot UserName</a>
+                <a href="forgotpassword.jsp">Forgot Password</a>
+            </div><br><br>
             
             <div class="error">
                 <div class="well" style="color:red">${loginFailedMessage}</div>

@@ -268,4 +268,43 @@ public class DB_Users {
         } catch (SQLException e) {
         }
     }
+    
+    public String getUserNameByEmailId(String emailId){
+        String userNameByEmail="";     
+        try {
+            Connection con=getConnection();
+            String query="SELECT username FROM users WHERE emailid=?";
+            PreparedStatement stmt=con.prepareStatement(query);
+            stmt.setString(1, emailId);
+            ResultSet rs=stmt.executeQuery();
+            Users u=new Users();
+            while(rs.next()){                
+                userNameByEmail=rs.getString("username");                
+            }
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return userNameByEmail;
+    }
+    
+    public String userPasswordRetrieval(String userName,String emailId){
+           String passwordd="";     
+        try {
+            Connection con=getConnection();
+            String query="SELECT password FROM users WHERE username=? AND emailid=?";
+            PreparedStatement stmt=con.prepareStatement(query);
+            stmt.setString(1, userName);
+            stmt.setString(2, emailId);
+            ResultSet rs=stmt.executeQuery();
+            Users u=new Users();
+            while(rs.next()){                
+                passwordd=rs.getString("password");                
+            }
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return passwordd;
+    }
 }

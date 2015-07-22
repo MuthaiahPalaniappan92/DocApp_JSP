@@ -145,7 +145,7 @@ public class LoginServlet extends HttpServlet {
        if(request.getParameter("user")!=null && request.getParameter("opponent")!=null){
             db.deleteConversation(request.getParameter("user"), request.getParameter("opponent"));
         }
-        
+              
         
     }
 
