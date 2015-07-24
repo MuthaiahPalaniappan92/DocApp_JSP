@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -122,6 +124,23 @@ public class DB_Connection {
             ResultSet rs=stmt.executeQuery();
             while(rs.next()){
                 listOfEmails.add(rs.getString("mailid"));
+            }
+        } catch (SQLException e) {
+            
+        }
+        return listOfEmails;
+    }
+    
+    public Map<String,String> getAllAppointmentEmailListByDayWithDoctor(String date){
+        Map<String,String> listOfEmails=new HashMap<String,String>();
+        try {
+            Connection con=getConnection();
+            String query="SELECT mailid,doc_name FROM pt_appt_details WHERE apt_date=?";
+            PreparedStatement stmt=con.prepareStatement(query);
+            stmt.setString(1, date);
+            ResultSet rs=stmt.executeQuery();
+            while(rs.next()){
+                listOfEmails.put(rs.getString("mailid"), rs.getString("doc_name"));
             }
         } catch (SQLException e) {
             

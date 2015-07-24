@@ -7,7 +7,9 @@
 import EmailSender.AlertEmail;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -77,16 +79,23 @@ public class AlertServlet extends HttpServlet {
         DB_Connection d=new DB_Connection();
         String toEmail="";
         String subject="Appointment Remainder";
-        String message="Hi there,<br>You are having an appointment today with a Doctor in our hospital";
+        //String message="Hi there,<br>You are having an appointment today with a Doctor in our hospital";
         String fromEmail="muthaiahpalaniappan92@gmail.com";
         String userName="muthaiahpalaniappan92";
         String password="Muthaiah92";
         String date=request.getParameter("date");
+        Map<String,String> toEmailAndConcerDrList=d.getAllAppointmentEmailListByDayWithDoctor(date);
         LinkedList<String> listOfEmails=d.getAllAppointmentEmailListByDay(date);
-        for(int i=0;i<listOfEmails.size();i++){
-            toEmail=listOfEmails.get(i);
+        for(Map.Entry entry: toEmailAndConcerDrList.entrySet()){
+            toEmail=entry.getKey().toString();
+            String message="Hi there,<br>You are having an appointment today with a Dr."+entry.getValue().toString()+" in our hospital";
             alertEmail.sendAlertMailsForPatients(fromEmail, userName, password, toEmail, message, subject);
         }
+        //message+=toEmailAndConcerDrList.size();
+        /*for(int i=0;i<listOfEmails.size();i++){
+            toEmail=listOfEmails.get(i);
+            alertEmail.sendAlertMailsForPatients(fromEmail, userName, password, toEmail, message, subject);
+        }*/
     }
 
     /**
