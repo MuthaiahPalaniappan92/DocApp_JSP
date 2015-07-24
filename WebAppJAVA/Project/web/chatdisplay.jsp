@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Conversation with <%=request.getParameter("opponent")%></title>
         <link rel="stylesheet" href="resources/css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="resources/css/styles.css"  type="text/css">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -19,6 +19,11 @@
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="resources/js/jquery.validate.min.js"></script>
         <script src="./resources/js/myScript.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(".text_Box").scroll();
+        });
+        </script>
     </head>
     <body>
        
@@ -45,19 +50,33 @@
             String userName=session.getAttribute("username").toString();
             ResultSet rs=d.getParticularConversation(opponent, userName);
             %>
-            <div class="text_Box">
+            
+                <h3 class="col-lg-4 col-sm-offset-5">Conversation with <%=request.getParameter("opponent")%></h3>
+            
+            <div class="text_Box col-lg-4 col-sm-offset-1">
                 <%
                     while(rs.next()){
                         if(rs.getString("sender").equals(userName) || rs.getString("receiver").equals(userName)){
-                            out.println("<div  style='text-align: left'> <b>You</b> sent at "+rs.getString("dateupdated")+"</div>");
-                            out.println("<div class='messages' style='text-align: left'>"+rs.getString("message")+"</div>");
+                            if(rs.getString("dateupdated").equals("0")){
+                                out.println("<div class='messagesright'>sent Today</div>");
+                                out.println("<div class='messages messagesright'>"+rs.getString("message")+"</div>");
+                            }else{
+                                out.println("<div class='messagesright'><b>sent at "+rs.getString("dateupdated")+"</div>");
+                                out.println("<div class='messages'messagesright>"+rs.getString("message")+"</div>");
+                            }
                         }else{
-                            out.println("<div  style='text-align: right'><b>"+ opponent +"</b> sent at "+rs.getString("dateupdated")+"</div>");
-                            out.println("<div class='messages' style='text-align: right'>"+rs.getString("message")+"</div>");
+                            if(rs.getString("dateupdated").equals("0")){
+                                out.println("<div class='messagesleft'><b>sent Today</div>");
+                                out.println("<div class='messages messagesleft'>"+rs.getString("message")+"</div>");
+                            }else{
+                                out.println("<div class='messagesleft'><b>sent at "+rs.getString("dateupdated")+"</div>");
+                                out.println("<div class='messages messagesleft'>"+rs.getString("message")+"</div>");
+                            }
                         }
                     }
                     %>
             </div>
+            
             <form action="ChatServlet" method="POST" class="chat">
                 
                 
@@ -65,18 +84,15 @@
                         <input type="hidden" name="sender" id="sender" value="<%=userName%>"/>
                     
                 <div class="row form-group">
-                    <div class="col-xs-1 col-sm-1">
-                        <label for="message"></label>
-                    </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-5 col-sm-offset-2 topPadding">
                         <input type="text" name="message" class="form-control" id="message" placeholder="Enter your message here"/>
                     </div>    
                 </div>   
                 <div class="row form-group">
-                    <div class="col-lg-2 col-sm-1">
+                    <div class="col-lg-2 col-sm-offset-1">
                         <label for="message"></label>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-2 col-sm-offset-1">
                         <input type="submit" value="Send" class="btn btn-md-3 btn-success"/>
                     </div>    
                 </div>   
