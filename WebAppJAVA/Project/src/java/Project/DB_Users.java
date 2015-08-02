@@ -242,7 +242,7 @@ public class DB_Users {
         ResultSet rs = null;
         try {
             Connection con=getConnection();
-            String query="SELECT message,day(current date)-day(dateupdated) dateupdated,sender,receiver FROM chat_box WHERE (receiver=? OR receiver=?) OR (sender=? OR sender=?)";
+            String query="SELECT message,day(dateupdated)-day(current date) dateupdated,sender,receiver FROM chat_box WHERE (receiver=? OR receiver=?) OR (sender=? OR sender=?)";
             PreparedStatement stmt=con.prepareStatement(query);
             stmt.setString(1, opponent);
             stmt.setString(2, loginUser);

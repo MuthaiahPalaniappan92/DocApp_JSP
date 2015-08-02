@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -151,4 +152,8 @@
             </div>
         </div>
         </div>
+            <%int a=5;
+              String s="";
+            %>
+    </body>        
 </html>

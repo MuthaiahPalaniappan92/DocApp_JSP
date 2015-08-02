@@ -77,7 +77,8 @@ public class LoginServlet extends HttpServlet {
         //processRequest(request, response);
         
         HttpSession session=request.getSession();
-        session.removeAttribute("username");
+        
+        session.invalidate();
         response.sendRedirect("login.jsp");
         request.setAttribute("loginFailedMessage", "Logged out Successfully");
     }
@@ -105,6 +106,7 @@ public class LoginServlet extends HttpServlet {
                     String loginUserName=db.updateLoginUserDetails(userName, password);
                     HttpSession session=request.getSession();
                     session.setAttribute("username", loginUserName);
+                    session.setMaxInactiveInterval(100);
                     //response.sendRedirect("myprofile.jsp");            
                     request.getRequestDispatcher("myprofile.jsp").forward(request, response);
                     

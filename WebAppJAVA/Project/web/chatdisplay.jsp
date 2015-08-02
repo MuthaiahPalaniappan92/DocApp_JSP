@@ -51,27 +51,27 @@
             ResultSet rs=d.getParticularConversation(opponent, userName);
             %>
             
-                <h3 class="col-lg-4 col-sm-offset-5">Conversation with <%=request.getParameter("opponent")%></h3>
+               <!-- <h3 class="col-lg-4 col-sm-offset-5">Conversation with <%=request.getParameter("opponent")%></h3>-->
             
-            <div class="text_Box col-lg-4 col-sm-offset-1">
+                <div class="text_Box">
                 <%
                     while(rs.next()){
-                        if(rs.getString("sender").equals(userName) || rs.getString("receiver").equals(userName)){
+                        if(rs.getString("sender").equals(userName)){
                             if(rs.getString("dateupdated").equals("0")){
-                                out.println("<div class='messagesright'>sent Today</div>");
-                                out.println("<div class='messages messagesright'>"+rs.getString("message")+"</div>");
-                            }else{
-                                out.println("<div class='messagesright'><b>sent at "+rs.getString("dateupdated")+"</div>");
-                                out.println("<div class='messages'messagesright>"+rs.getString("message")+"</div>");
-                            }
+                                %><div style='text-align:left;'>sent Today</div>
+                                <div style='color: green; text-align:left;'><%=rs.getString("message")%></div>
+                            <%}else{%>
+                                <div style='text-align:left;'><b>sent <%=rs.getString("dateupdated")%> day(s) before</div>
+                                <div class='leftAlign' style='color: green;text-align:left;'><%=rs.getString("message")%></div>
+                            <%}
                         }else{
-                            if(rs.getString("dateupdated").equals("0")){
-                                out.println("<div class='messagesleft'><b>sent Today</div>");
-                                out.println("<div class='messages messagesleft'>"+rs.getString("message")+"</div>");
-                            }else{
-                                out.println("<div class='messagesleft'><b>sent at "+rs.getString("dateupdated")+"</div>");
-                                out.println("<div class='messages messagesleft'>"+rs.getString("message")+"</div>");
-                            }
+                            if(rs.getString("dateupdated").equals("0")){%>
+                                <div style='text-align:right'><b>sent Today</div>
+                                <div class='rightAlign' style='color: red; text-align:right;'><%=rs.getString("message")%></div>
+                            <%}else{%>
+                                <div style='text-align:right'><b>sent at <%=rs.getString("dateupdated")%>  day(s) before</div>
+                                <div style='color: red; text-align:right;'><%=rs.getString("message")%></div>
+                            <%}
                         }
                     }
                     %>

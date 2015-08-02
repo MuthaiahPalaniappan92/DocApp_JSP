@@ -4,6 +4,8 @@
     Author     : c0652674
 --%>
 
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="Project.DB_Users"%>
 <%@page import="Project.Users"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -38,7 +40,12 @@
                 </div>
             </div>
            </header> 
+        <%
+        // Set refresh, autoload time in seconds
+        response.setIntHeader("Refresh", 20000);
+        // Get current time
         
+        %>
          <div class="container">
         <%  
             //Sign Up Functionalities
@@ -85,7 +92,7 @@
                     <label for="username" style="color:red">*</label>
                 </div> 
                 <div class="col-lg-4">
-                    <input type="text" value="<%=session.getAttribute("email")%>" class="form-control" id="username" name="username"/>
+                    <input type="text" value="<%if(session.getAttribute("email")!=null)out.println(session.getAttribute("email"));else out.println();%>" class="form-control" id="username" name="username"/>
                 </div>    
             </div> 
             </div>
