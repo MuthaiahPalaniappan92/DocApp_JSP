@@ -29,7 +29,7 @@
             <div class="navbar navbar-default">
 		<div class="navbar-header">
                     <ul class="nav nav-pills nav-justified">
-			<li><a href="#home" data-toggle="tab">Home</a></li>
+			<li><a href="home.jsp" data-toggle="tab">Home</a></li>
                         <li><a href="../Project/myprofile.jsp" data-toggle="tab">My Profile</a></li>
                         <li><a href="../Project/signup.jsp" data-toggle="tab">Sign Up</a></li>
                         <li class="active"><a href="" data-toggle="tab">Log In</a></li>

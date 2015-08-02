@@ -242,7 +242,7 @@ public class DB_Users {
         ResultSet rs = null;
         try {
             Connection con=getConnection();
-            String query="SELECT message,day(dateupdated)-day(current date) dateupdated,sender,receiver FROM chat_box WHERE (receiver=? OR receiver=?) OR (sender=? OR sender=?)";
+            String query="SELECT message,day(dateupdated)-day(current date) dateupdated,sender,receiver FROM chat_box WHERE (receiver=? OR receiver=?) AND (sender=? OR sender=?)";
             PreparedStatement stmt=con.prepareStatement(query);
             stmt.setString(1, opponent);
             stmt.setString(2, loginUser);
@@ -306,5 +306,34 @@ public class DB_Users {
             System.out.println(e.getMessage());
         }
         return passwordd;
+    }
+    
+    public void insertProduct(String category, String keyword,String images, double cost,String user){
+        try {
+            Connection con=getConnection();
+            String query="INSERT INTO products(category,keyword,images,cost,user) VALUES(?,?,?,?,?)";
+            PreparedStatement stmt=con.prepareStatement(query);
+            stmt.setString(1, category);
+            stmt.setString(2, keyword);
+            stmt.setString(3, images);
+            stmt.setDouble(4, cost);
+            stmt.setString(5, user);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error");
+        }
+    }
+    
+    public ResultSet displayProducts(){
+        ResultSet rs = null;
+        try {
+            Connection con=getConnection();
+            String query="SELECT * FROM products";
+            PreparedStatement stmt=con.prepareStatement(query);
+            rs=stmt.executeQuery();
+        } catch (SQLException e) {
+            System.out.println("Error");
+        }
+        return rs;
     }
 }

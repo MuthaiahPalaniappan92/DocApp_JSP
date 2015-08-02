@@ -32,7 +32,7 @@
             <div class="navbar navbar-default">
 		<div class="navbar-header">
                     <ul class="nav nav-pills nav-justified">
-			<li><a href="#home" data-toggle="tab">Home</a></li>
+			<li><a href="home.jsp" data-toggle="tab">Home</a></li>
                         <li><a href="../Project/myprofile.jsp" data-toggle="tab">My Profile</a></li>
                         <li><a href="../Project/signup.jsp" data-toggle="tab">Sign Up</a></li>
                         <li><a href="" data-toggle="tab">Log In</a></li>
@@ -43,6 +43,7 @@
                 </div>
             </div>
            </header>
+        
         ${emptyReceiverOrMessage}
         <%
             DB_Users d=new DB_Users();
@@ -52,25 +53,25 @@
             %>
             
                <!-- <h3 class="col-lg-4 col-sm-offset-5">Conversation with <%=request.getParameter("opponent")%></h3>-->
-            
+           
                 <div class="text_Box">
                 <%
                     while(rs.next()){
                         if(rs.getString("sender").equals(userName)){
                             if(rs.getString("dateupdated").equals("0")){
-                                %><div style='text-align:left;'>sent Today</div>
-                                <div style='color: green; text-align:left;'><%=rs.getString("message")%></div>
+                                %><div style='text-align:right;'>sent Today</div>
+                                <div style='color: green; text-align:right;'><%=rs.getString("message")%></div>
                             <%}else{%>
-                                <div style='text-align:left;'><b>sent <%=rs.getString("dateupdated")%> day(s) before</div>
-                                <div class='leftAlign' style='color: green;text-align:left;'><%=rs.getString("message")%></div>
+                                <div style='text-align:right;'><b>sent <%=rs.getString("dateupdated")%> day(s) before</div>
+                                <div class='leftAlign' style='color: green;text-align:right;'><%=rs.getString("message")%></div>
                             <%}
                         }else{
                             if(rs.getString("dateupdated").equals("0")){%>
-                                <div style='text-align:right'><b>sent Today</div>
-                                <div class='rightAlign' style='color: red; text-align:right;'><%=rs.getString("message")%></div>
+                                <div style='text-align:left'><b>sent Today</div>
+                                <div class='rightAlign' style='color: red; text-align:left;'><%=rs.getString("message")%></div>
                             <%}else{%>
-                                <div style='text-align:right'><b>sent at <%=rs.getString("dateupdated")%>  day(s) before</div>
-                                <div style='color: red; text-align:right;'><%=rs.getString("message")%></div>
+                                <div style='text-align:left'><b>sent at <%=rs.getString("dateupdated")%>  day(s) before</div>
+                                <div style='color: red; text-align:left;'><%=rs.getString("message")%></div>
                             <%}
                         }
                     }

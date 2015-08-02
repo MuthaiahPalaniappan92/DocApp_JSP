@@ -88,6 +88,11 @@ public class FileUploadServlet extends HttpServlet {
         if(isMultiPart){
             ServletFileUpload upload=new ServletFileUpload();
             try {
+                String category="";
+                    String keywords="";
+                    double cost=0.0;
+                    String imagess="";
+                    String user="";
                 FileItemIterator itr=upload.getItemIterator(request);
                 Map<String,String> map=new HashMap<String,String>();
                 while(itr.hasNext()){
@@ -112,23 +117,27 @@ public class FileUploadServlet extends HttpServlet {
                             response.getWriter().println("File uploading failed");
                         }
                     }
-                    String category="";
-                    String keywords="";
-                    String cost="";
-                    String imagess="";
+                    
                     for(Map.Entry<String,String> entry:map.entrySet()){
                         if(entry.getKey().equals("category")){
                             category=entry.getValue();
                         }else if(entry.getKey().equals("keywords")){
                             keywords=entry.getValue();
                         }else if(entry.getKey().equals("cost")){
-                            cost=entry.getValue();
+                            cost=Double.parseDouble(entry.getValue());
                         }else if(entry.getKey().equals("fileName")){
                             imagess=entry.getValue();
+                        }else if(entry.getKey().equals("user")){
+                            user=entry.getValue();
                         }
                     }
-                    response.getWriter().println(path+"images\\"+imagess);
+                    
                 }
+                response.getWriter().println(path+"images\\"+imagess);
+                imagess=path+"images\\"+imagess;
+                response.getWriter().println(category+"---"+keywords+"----"+cost+"---"+imagess);
+                DB_Users d=new DB_Users();
+                d.insertProduct(category, keywords, imagess, cost, user);
             } catch (FileUploadException e) {
                 e.printStackTrace();
             }

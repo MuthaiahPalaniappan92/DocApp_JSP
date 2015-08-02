@@ -35,6 +35,21 @@
                 </div>
             </div>
         </header>
+        <div class="well">
+                
+                <%
+                    
+                        String u="";
+                    try{
+                        u=session.getAttribute("username").toString();
+                        out.println("<p><b>WELCOME "+u+"</b></p>");
+                        
+            //          System.out.println(d.getAllUserName().toString());
+                    }catch(Exception e){
+                        response.sendRedirect("login.jsp");
+                    }
+                %>
+            </div>
         <form name="login" action="FileUploadServlet" method="POST" enctype="multipart/form-data">            
             <div class="form-group">
             <div class="row">
@@ -63,6 +78,7 @@
                 </div> 
                 <div class="col-lg-4">
                     <input type="text" class="form-control" name="cost"/>
+                    <input type="hidden" class="form-control" name="user" value="<%=u%>"/>
                 </div>    
             </div>
             </div>

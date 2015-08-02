@@ -31,7 +31,7 @@
             <div class="navbar navbar-default">
 		<div class="navbar-header">
                     <ul class="nav nav-pills nav-justified">
-			<li><a href="#home" data-toggle="tab">Home</a></li>
+			<li><a href="home.jsp" data-toggle="tab">Home</a></li>
                         <li><a href="../Project/myprofile.jsp" data-toggle="tab">My Profile</a></li>
                         <li><a href="../Project/signup.jsp" data-toggle="tab">Sign Up</a></li>
                         <li><a href="" data-toggle="tab">Log In</a></li>
@@ -109,10 +109,7 @@
                         ArrayList conversationList =d.getChatList(userName);
                         if(conversationList.size()!=0){
                             for(int i=0;i<conversationList.size();i++){
-                                
                                 out.println("<p><a href='chatdisplay.jsp?opponent="+conversationList.get(i)+"' name='opponent'><input type='button' value='"+conversationList.get(i)+"' class='btn btn-lg-6 btn-default '></a>");
-               
-                                
                             }
                         }
                         
