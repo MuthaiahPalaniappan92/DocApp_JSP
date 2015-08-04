@@ -18,6 +18,12 @@
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="resources/js/jquery.validate.min.js"></script>
         <script src="./resources/js/myScript.js"></script>
+        <style>
+            img{
+                width:42px;
+                height: 42px;
+            }
+        </style>
     </head>
     <body>
        
@@ -38,15 +44,18 @@
             </div>
         </header>
         <%
+            String img="";
             DB_Users d=new DB_Users();
             ResultSet r=d.displayProducts();
+            
             out.println("<table>");
             out.println("<tr><td>Category</td><td>Images</td><td>Cost</td><td>Posted By</td></tr>");
             while(r.next()){
+                img=r.getString("images");
                 out.print("<tr><td>"+r.getString("category")+"</td>");
-                out.print("><td><img src='"+r.getString("images")+" height='42' width='42''></td>");
+                out.print("<td><img src='"+img+"'></td>");
                 out.print("<td>"+r.getString("cost")+"</td>");
-                out.println("<td>"+r.getString("user")+"</td></tr>");
+                out.println("<td><a href='chatdisplay.jsp?opponent="+r.getString("user")+"'>"+r.getString("user")+"</a></td></tr>");
             }
             out.println("</table>");
         %>

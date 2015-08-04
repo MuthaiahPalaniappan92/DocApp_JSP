@@ -133,8 +133,8 @@ public class FileUploadServlet extends HttpServlet {
                     }
                     
                 }
-                response.getWriter().println(path+"images\\"+imagess);
-                imagess=path+"images\\"+imagess;
+                response.getWriter().println("images\\"+imagess);
+                imagess="images\\"+imagess;
                 response.getWriter().println(category+"---"+keywords+"----"+cost+"---"+imagess);
                 DB_Users d=new DB_Users();
                 d.insertProduct(category, keywords, imagess, cost, user);
