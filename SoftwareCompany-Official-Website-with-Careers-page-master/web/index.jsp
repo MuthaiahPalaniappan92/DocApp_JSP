@@ -1,0 +1,114 @@
+<%-- 
+    Document   : index
+    Created on : 18-Jul-2015, 11:58:05 PM
+    Author     : c0652674
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <title>JSP Page</title>
+        <style>
+            #logo{
+                padding:10px;
+                float:left;
+                height:150px;
+            }
+            #cName{
+                padding-top:50px;
+                padding-bottom: 3px;
+                font-size: 200%;
+            }
+            h4{
+                color:background;
+            }
+        </style>
+    </head>
+    <body>
+        <div data-role="page" id="home">
+            <header data-role="header">
+                <img id="logo" src="infolife-logo.png">
+                <h1 id="cName">Infolife Technologies Pvt Ltd</h1>
+                <h2>Bone to Health care</h2>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="" data-theme="a" class="ui-btn-active" data-icon="home" data-transition="pop">Home</a></li>
+                        <li><a href="clientdetails.jsp" data-theme="f" data-icon="star" data-transition="pop">Client Details</a></li>
+                        <li><a href="products.jsp" data-theme="c" data-icon="grid" data-transition="pop">Products</a></li>
+                        <li><a href="contact.jsp" data-theme="d" data-icon="location" data-transition="pop">Contact Us</a></li>
+                        <li><a href="careers.jsp" data-theme="e" data-icon="comment" data-transition="pop">Careers</a></li>
+                    </ul>
+                </div>
+            </header>
+            <section data-role="content">
+                <p>
+                    At <b>INFOLIFE Technologies Pvt Ltd</b>, we believe in building relationships and partnerships with our customers. We work with them at every step of the process to convert their vision into a reality. The major services provided are:
+                </p>
+                <div>
+                    <h4>Comprehensive Client Care: Exceptional Innovation, Unrivaled Service:</h4>
+                    <p>
+                        We develop a unique understanding with our clients by getting their feedback on regular occasions and reporting to them the progress of their projects. With the aid of their continuous feedback, we are able to enhance our products and thus helping them to reach new heights.
+                    </p>
+                </div>
+                <div>
+                    <h4>Value added reports and documents:</h4>
+                    <p>
+                        Reports that capture the flow and the performance of the system are generated with a thoroughness designed for improvement of the business process. The reports are generated to identify the underlying nature of the business model. Coupled with quick turn-around times, the custom report design services will help to enhance information reporting at the needed level.
+                    </p>
+                </div>
+                <div>
+                    <h4>Expertise in function:</h4>
+                    <p>
+                        We approach each business with expert analysis and translate their processes into compliant systems.
+                    </p>
+                </div>
+                <div>
+                    <h4>Optimum solutions:</h4>
+                    <p>
+                        The process workflow is designed to cater to challenging situations. Exceptional cases are escalated to the Project Coordinators and subsequently to the client using a carefully designed escalation process. This process was developed to ensure quick response times and not allow for lapses in oversight.
+                    </p>
+                </div>
+                <div>
+                    <h4>Exceptional Technical assistance:</h4>
+                    <p>
+                        Affordable assistance, available around the clock and adaptable to any environment are fundamentals of our company. Quality assurance is peer reviewed and continuous.
+                    </p>
+                </div>
+                <div>
+                    <h4>Customized special programming:</h4>
+                    <p>
+                        Custom programming can save hours of manual data entry when problems or special requests arise. Whether it is changes to existing interface specifications or help removing errors that were generated by hospital staff, our special programming services will save the time, money and frustration.
+                    </p>
+                </div>
+                <div>
+                    <h4>Comprehensive networking:</h4>
+                    <p>
+                        With our package the clients are able to migrate their infrastructure and keep ensure their desired data is transferred easily. This process thus reduces time taken to move from area to area. We have the ability to provide LAN/WAN design and installation.
+                    </p>
+                </div>
+                <div>
+                    <h4>First rate security:</h4>
+                    <p>
+                        Given the nature of the data we handle, security is foremost in our minds. We have designed the architecture of every product at every level with layered security to protect our data.
+                    </p>
+                </div>
+                <div>
+                    <h4>Reduce in redundancy:</h4>
+                    <p>
+                        Integration of the various departments within the organization ensures the free flow of electronic information in a secure environment, thereby, reducing the amount of inefficiency at work. Health care institutions can streamline their workflows and concentrate on their core business.
+                    </p>
+                </div>
+            </section>
+            <div data-role="footer">
+                <h2>&copy;Infolife Technologies Pvt Ltd</h2>
+            </div>
+        </div>
+    </body>
+</html>
