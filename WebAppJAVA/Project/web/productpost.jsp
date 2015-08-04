@@ -16,6 +16,13 @@
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="resources/js/jquery.validate.min.js"></script>
         <script src="./resources/js/myScript.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#fileName').focus(function(){
+                    alert('Please give the file name with extension. Sorry for the inconvenience. I am a beginner');
+                })
+            })
+        </script>
     </head>
     <body>
        
@@ -88,7 +95,7 @@
                     <label for="fileName">File Name with Extension</label>
                 </div> 
                 <div class="col-lg-4">
-                    <input type="text" class="form-control" name="fileName"/>
+                    <input type="text" class="form-control" name="fileName" id="fileName"/>
                 </div>    
             </div>
             </div>
